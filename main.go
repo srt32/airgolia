@@ -20,6 +20,11 @@ type airtableObjectsResponse struct {
 }
 
 func main() {
+	records := FetchRecords()
+	PostRecords(*records)
+}
+
+func FetchRecords() *airtableObjectsResponse {
 	airtableApiKey := os.Getenv("AIRTABLE_API_KEY")
 	airtableTableName := os.Getenv("AIRTABLE_TABLE_NAME")
 	airtableWorspaceId := os.Getenv("AIRTABLE_WORKSPACE_ID")
@@ -37,8 +42,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%s", objects)
 
+	return objects
+}
+
+func PostRecords(objects airtableObjectsResponse) {
 	algoliaApiKey := os.Getenv("ALGOLIA_API_KEY")
 	algoliaAppId := os.Getenv("ALGOLIA_APP_ID")
 	algoliaIndexName := os.Getenv("ALGOLIA_INDEX_NAME")

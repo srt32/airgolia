@@ -8,6 +8,6 @@ Read data from Airtable and post it to an Algolia index.
 
 ## Notes
 
-* When run, this task will fetch all records in the Airtable table and create or update (based on id).
+* When run, this task will fetch all records in the Airtable table and create or update (based on id) an object in the given Algolia index.
 * All fields are synced.
 * The Airtable calls do not paginate so if there are too many records they won't sync (for now).
